@@ -25,7 +25,7 @@ export default function LogosPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Logo on Moloch 400 background */}
-              <div className="bg-[#D25C41] p-8 rounded-lg flex items-center justify-center">
+              <div className="bg-moloch-400 p-8 rounded-lg flex items-center justify-center">
                 <Image
                   src="/assets/logos/Logotype.svg"
                   alt="Raid Guild Logo"
@@ -36,7 +36,7 @@ export default function LogosPage() {
               </div>
 
               {/* Logo on Moloch 800 background */}
-              <div className="bg-[#29100A] p-8 rounded-lg flex items-center justify-center">
+              <div className="bg-moloch-800 p-8 rounded-lg flex items-center justify-center">
                 <Image
                   src="/assets/logos/Logotype_moloch.svg"
                   alt="Raid Guild Logo"
@@ -47,7 +47,7 @@ export default function LogosPage() {
               </div>
 
               {/* Logo on Scroll 100 background */}
-              <div className="bg-[#F9F7E7] p-8 rounded-lg flex items-center justify-center border border-border">
+              <div className="bg-scroll-100 p-8 rounded-lg flex items-center justify-center border border-border">
                 <Image
                   src="/assets/logos/Logotype_moloch.svg"
                   alt="Raid Guild Logo"
@@ -74,7 +74,7 @@ export default function LogosPage() {
               </div>
 
               {/* Logomark on Moloch 800 background */}
-              <div className="bg-[#29100A] p-8 rounded-lg flex items-center justify-center">
+              <div className="bg-moloch-800 p-8 rounded-lg flex items-center justify-center">
                 <Image
                   src="/assets/logos/Logomark_moloch.svg"
                   alt="Raid Guild Logomark"
@@ -85,7 +85,7 @@ export default function LogosPage() {
               </div>
 
               {/* Logomark on Scroll 100 background */}
-              <div className="bg-[#F9F7E7] p-8 rounded-lg flex items-center justify-center border border-border">
+              <div className="bg-scroll-100 p-8 rounded-lg flex items-center justify-center border border-border">
                 <Image
                   src="/assets/logos/Logomark.svg"
                   alt="Raid Guild Logomark"

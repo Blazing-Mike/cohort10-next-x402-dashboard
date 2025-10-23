@@ -1,12 +1,22 @@
+import Link from "next/link";
+
 export default function UIPage() {
   return (
     <div className="container-custom py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-display-lg mb-8">UI Components</h1>
-        <p className="text-body-lg text-muted-foreground mb-12">
-          Design system components and patterns for the Raid Guild brand.
-        </p>
-        
+
+        <div className="mb-8">
+          <Link
+            href="https://github.com/raid-guild/brand/blob/main/README.md"
+            className="text-lg text-primary hover:text-primary/80 transition-colors "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Component installation instruction on GitHub
+          </Link>
+        </div>
+
         <div className="space-y-16">
           <section>
             <h2 className="text-heading-lg mb-6">Buttons</h2>
@@ -17,14 +27,14 @@ export default function UIPage() {
                   Primary Action
                 </button>
               </div>
-              
+
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-4">Secondary Button</h3>
                 <button className="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors">
                   Secondary Action
                 </button>
               </div>
-              
+
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-4">Outline Button</h3>
                 <button className="border border-border px-6 py-3 rounded-lg hover:bg-muted/50 transition-colors">
@@ -33,7 +43,7 @@ export default function UIPage() {
               </div>
             </div>
           </section>
-          
+
           <section>
             <h2 className="text-heading-lg mb-6">Cards</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -43,7 +53,7 @@ export default function UIPage() {
                   Simple card component with border and padding
                 </p>
               </div>
-              
+
               <div className="p-6 border border-border rounded-lg bg-muted/50">
                 <h3 className="text-heading-md mb-2">Highlighted Card</h3>
                 <p className="text-body-base text-muted-foreground">
@@ -52,25 +62,25 @@ export default function UIPage() {
               </div>
             </div>
           </section>
-          
+
           <section>
             <h2 className="text-heading-lg mb-6">Form Elements</h2>
             <div className="space-y-6">
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-4">Input Fields</h3>
                 <div className="space-y-4">
-                  <input 
-                    type="text" 
-                    placeholder="Enter text here" 
+                  <input
+                    type="text"
+                    placeholder="Enter text here"
                     className="w-full px-4 py-2 border border-input rounded-lg bg-background"
                   />
-                  <textarea 
+                  <textarea
                     placeholder="Enter longer text here"
                     className="w-full px-4 py-2 border border-input rounded-lg bg-background h-24"
                   />
                 </div>
               </div>
-              
+
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-4">Checkboxes and Radio</h3>
                 <div className="space-y-4">
@@ -86,39 +96,67 @@ export default function UIPage() {
               </div>
             </div>
           </section>
-          
+
           <section>
             <h2 className="text-heading-lg mb-6">Navigation</h2>
             <div className="p-6 border border-border rounded-lg">
               <nav className="flex space-x-6">
-                <a href="#" className="text-body-base hover:text-primary transition-colors">Home</a>
-                <a href="#" className="text-body-base hover:text-primary transition-colors">Logos</a>
-                <a href="#" className="text-body-base hover:text-primary transition-colors">Colors</a>
-                <a href="#" className="text-body-base hover:text-primary transition-colors">Typography</a>
-                <a href="#" className="text-body-base hover:text-primary transition-colors">UI</a>
+                <a
+                  href="#"
+                  className="text-body-base hover:text-primary transition-colors"
+                >
+                  Home
+                </a>
+                <a
+                  href="#"
+                  className="text-body-base hover:text-primary transition-colors"
+                >
+                  Logos
+                </a>
+                <a
+                  href="#"
+                  className="text-body-base hover:text-primary transition-colors"
+                >
+                  Colors
+                </a>
+                <a
+                  href="#"
+                  className="text-body-base hover:text-primary transition-colors"
+                >
+                  Typography
+                </a>
+                <a
+                  href="#"
+                  className="text-body-base hover:text-primary transition-colors"
+                >
+                  UI
+                </a>
               </nav>
             </div>
           </section>
-          
+
           <section>
             <h2 className="text-heading-lg mb-6">Usage Guidelines</h2>
             <div className="space-y-4">
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-2">Consistency</h3>
                 <p className="text-body-base text-muted-foreground">
-                  Use consistent spacing, colors, and typography across all components
+                  Use consistent spacing, colors, and typography across all
+                  components
                 </p>
               </div>
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-2">Accessibility</h3>
                 <p className="text-body-base text-muted-foreground">
-                  Ensure all components meet accessibility standards with proper contrast and focus states
+                  Ensure all components meet accessibility standards with proper
+                  contrast and focus states
                 </p>
               </div>
               <div className="p-6 border border-border rounded-lg">
                 <h3 className="text-heading-md mb-2">Responsive Design</h3>
                 <p className="text-body-base text-muted-foreground">
-                  Components should work across all device sizes with appropriate breakpoints
+                  Components should work across all device sizes with
+                  appropriate breakpoints
                 </p>
               </div>
             </div>
