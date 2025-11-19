@@ -134,33 +134,6 @@ export default function UIPage() {
               </nav>
             </div>
           </section>
-
-          <section>
-            <h2 className="text-heading-lg mb-6">Usage Guidelines</h2>
-            <div className="space-y-4">
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-2">Consistency</h3>
-                <p className="text-body-base text-muted-foreground">
-                  Use consistent spacing, colors, and typography across all
-                  components
-                </p>
-              </div>
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-2">Accessibility</h3>
-                <p className="text-body-base text-muted-foreground">
-                  Ensure all components meet accessibility standards with proper
-                  contrast and focus states
-                </p>
-              </div>
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-2">Responsive Design</h3>
-                <p className="text-body-base text-muted-foreground">
-                  Components should work across all device sizes with
-                  appropriate breakpoints
-                </p>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
     </div>

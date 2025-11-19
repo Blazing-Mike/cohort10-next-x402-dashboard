@@ -4,7 +4,8 @@ export default function Home() {
   return (
     <div className="container-custom py-16">
       <div className="mx-auto">
-        <h1 className="text-display-lg mb-8">Raid Guild Brand Guidelines</h1>
+        <h1 className="text-display-sm mb-8">Raid Guild Brand Guidelines</h1>
+        <h2 className="text-display-lg mb-8">Brand</h2>
 
         <p className="text-body-lg text-moloch-800">
           What is here, how to use it
@@ -68,21 +69,6 @@ export default function Home() {
                   className="block hover:text-accent transition-colors"
                 >
                   <h3 className="text-heading-sm">Typography</h3>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-4">
-            <div className="space-y-6">
-              <h2 className="text-heading-lg text-moloch-500 mb-8">UI</h2>
-
-              <div className="space-y-4">
-                <Link
-                  href="/ui"
-                  className="block hover:text-accent transition-colors"
-                >
-                  <h3 className="text-heading-sm">UI Components</h3>
                 </Link>
               </div>
             </div>
