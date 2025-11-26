@@ -13,7 +13,7 @@ const buttonVariants = cva(
         primary: "bg-moloch-500 text-scroll-100 hover:bg-moloch-800",
         secondary:
           "border-2 border-moloch-800 bg-scroll-100 text-moloch-800 hover:bg-moloch-800 hover:text-scroll-100",
-        ghost: "bg-transparent text-scroll-100 hover:text-scroll-100/80",
+        ghost: "bg-transparent text-moloch-500 hover:text-scroll-100/80",
         moloch: "bg-moloch-800 text-moloch-500 hover:bg-moloch-700",
       },
       size: {
