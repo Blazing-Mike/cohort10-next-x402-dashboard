@@ -4,6 +4,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { SwitchExample } from "@/components/examples/SwitchExample";
 import { ButtonExample } from "@/components/examples/ButtonExample";
+import { AccordionExample } from "@/components/examples/AccordionExample";
+import { BadgeExample } from "@/components/examples/BadgeExample";
+import { CardExample } from "@/components/examples/CardExample";
+import { CommandExample } from "@/components/examples/CommandExample";
+import { DialogExample } from "@/components/examples/DialogExample";
+import { InputExample } from "@/components/examples/InputExample";
+import { LabelExample } from "@/components/examples/LabelExample";
+import { MultiselectExample } from "@/components/examples/MultiselectExample";
+import { NavigationMenuExample } from "@/components/examples/NavigationMenuExample";
+import { ProgressExample } from "@/components/examples/ProgressExample";
+import { RadioGroupExample } from "@/components/examples/RadioGroupExample";
+import { SelectExample } from "@/components/examples/SelectExample";
+import { TextareaExample } from "@/components/examples/TextareaExample";
+import { TooltipExample } from "@/components/examples/TooltipExample";
 
 export default function UIPage() {
   const [activeTab, setActiveTab] = useState<"getting-started" | "examples">(
@@ -171,7 +185,23 @@ npm install -D @tailwindcss/postcss tw-animate-css`}</code>
           <div className="space-y-16">
             <section id="examples-top" className="mb-8">
               <h2 className="type-heading-lg mb-6">Component Examples</h2>
-              <ul className="space-y-2">
+              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+                <li>
+                  <a
+                    href="#accordion"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Accordion
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#badge"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Badge
+                  </a>
+                </li>
                 <li>
                   <a
                     href="#button"
@@ -182,16 +212,155 @@ npm install -D @tailwindcss/postcss tw-animate-css`}</code>
                 </li>
                 <li>
                   <a
+                    href="#card"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Card
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#command"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Command
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#dialog"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Dialog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#input"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Input
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#label"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Label
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#multiselect"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Multiselect
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#navigation-menu"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Navigation Menu
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#progress"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Progress
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#radio-group"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Radio Group
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#select"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Select
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="#switch"
                     className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
                   >
                     Switch
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="#textarea"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Textarea
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#tooltip"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Tooltip
+                  </a>
+                </li>
               </ul>
             </section>
+            <AccordionExample />
+            <hr />
+            <BadgeExample />
+            <hr />
+
             <ButtonExample />
+            <hr />
+
+            <CardExample />
+            <hr />
+
+            <CommandExample />
+            <hr />
+
+            <DialogExample />
+            <hr />
+
+            <InputExample />
+            <hr />
+
+            <LabelExample />
+            <hr />
+
+            <MultiselectExample />
+            <hr />
+
+            <NavigationMenuExample />
+            <hr />
+
+            <ProgressExample />
+            <hr />
+
+            <RadioGroupExample />
+            <hr />
+
+            <SelectExample />
+            <hr />
+
             <SwitchExample />
+            <hr />
+
+            <TextareaExample />
+            <hr />
+
+            <TooltipExample />
           </div>
         )}
       </div>
