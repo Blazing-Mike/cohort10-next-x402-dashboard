@@ -98,10 +98,8 @@ The hook configuration is in `lefthook.yml`.
 │   │   └── ui/                # UI component showcase page
 │   ├── components/
 │   │   ├── ui/                # 42+ reusable UI components
-│   │   ├── examples/          # Component usage examples
 │   │   ├── shared/            # Header, Footer, NavLinks
 │   │   ├── landing/           # Landing page sections
-│   │   └── illustrations/     # Illustration gallery
 │   └── lib/
 │       ├── fonts.ts           # RaidGuild brand fonts
 │       ├── theme-context.tsx  # Light/dark mode context
@@ -207,52 +205,6 @@ Use `.container-custom` for consistent max-width and padding, and `.grid-custom`
 
 A comprehensive catalog of all available UI components is available in `docs/ui-components.md`. This document is **essential** when working with LLM developer agents.
 
-#### For LLM Developer Agents
-
-**Always include the UI Components Catalog in your prompt context** when working with LLM agents (Cursor, GitHub Copilot, ChatGPT, etc.). This ensures the agent:
-
-- Knows what components are available
-- Uses existing components instead of creating custom alternatives
-- Follows design system patterns
-- Uses correct imports and props
-
-- **Layout**: Card, Sheet, Dialog, Drawer, Tabs, Accordion
-- **Forms**: Input, Textarea, Select, Checkbox, Radio, DatePicker, Combobox, Multiselect
-- **Navigation**: NavigationMenu, Breadcrumb, Pagination, Sidebar
-- **Feedback**: Progress, Skeleton, HoverCard, Tooltip
-- **Data**: Table, DataTable, Chart
-- **Actions**: Button, DropdownMenu, Command, Menubar
-- **Utilities**: Badge, Kbd, Separator, ScrollArea, Popover
-
-**Full catalog**: See [`docs/ui-components.md`](docs/ui-components.md) for complete component documentation with examples, props, and usage patterns.
-
-### Visual Assets
-
-**Illustrations Library**: 90+ hand-drawn illustrations in `public/assets/webp/`
-- Sizes: 1440x1440 (square), 1080x1440 (portrait), 1440x550 (wide)
-- Variants: Color and black & white versions
-- Categories: Warriors, castles, nature, architecture
-
-**Logos**: Multiple variants in `public/assets/logos/`
-
-## Landing Page Plan
-
-### Sections to Build
-
-1. **Hero Section** — Value prop, CTAs, hero image
-2. **Features Section** — Key benefits with cards
-3. **How It Works** — Step-by-step process
-4. **Stats/Social Proof** — Metrics cards
-5. **FAQ** — Accordion with common questions
-6. **CTA/Lead Capture** — Contact/demo form
-
-### Components to Create
-
-Create in `src/components/landing/`:
-- `HeroSection.tsx` — Hero with CTA buttons
-- `FeaturesSection.tsx` — Feature cards grid
-- `StatsSection.tsx` — Metrics display
-- `CTASection.tsx` — Lead capture form
 
 ## Contributing
 
