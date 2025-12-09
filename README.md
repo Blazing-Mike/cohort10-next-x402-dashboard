@@ -62,39 +62,69 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ### Available Scripts
 
-- **Biome + Ultracite**: Formats and lints staged files
-- **Stage fixed files**: Automatically stages formatted changes
-- **Enforces conventional commits**: Via commit message format
+### Git Hooks (Lefthook)
+
+This project uses Lefthook for automated code quality checks:
+
+**Pre-commit hooks:**
+
+- TypeScript type checking (skipped during merge/rebase)
+- Runs automatically on `git commit`
+
+**Configuration:**
+
+- Biome checks are available but disabled by default for faster commits
+- Build checks disabled for faster pushes (builds are handled by CI/CD)
+- Edit `lefthook.yml` to customize or enable additional checks
+
+To skip hooks when needed:
+
+```bash
+git commit --no-verify
+git push --no-verify
+```
 
 The hook configuration is in `lefthook.yml`.
 
 ## Project Structure
 
 ```
-src/
-├── app/                    # Next.js app router
-│   ├── globals.css        # Global styles with RG design tokens
-│   ├── layout.tsx         # Root layout with fonts and theme
-│   ├── page.tsx           # Home/landing page
-│   └── ui/                # UI component showcase page
-├── components/
-│   ├── ui/                # 42+ reusable UI components
-│   ├── examples/          # Component usage examples
-│   ├── shared/            # Header, Footer, NavLinks
-│   ├── landing/           # Landing page sections (to be created)
-│   └── illustrations/     # Illustration gallery
-├── lib/
-│   ├── fonts.ts           # RaidGuild brand fonts
-│   ├── theme-context.tsx  # Light/dark mode context
-│   └── utils.ts           # Utility functions (cn, etc.)
-public/
-├── assets/
-│   ├── webp/              # 90+ brand illustrations
-│   ├── logos/             # RaidGuild logos
-│   └── icon/              # Icon sets
-└── fonts/                 # RaidGuild brand fonts
-docs/
-└── ui-components.md       # Comprehensive component catalog
+.
+├── src/
+│   ├── app/                    # Next.js app router
+│   │   ├── globals.css        # Global styles with RG design tokens
+│   │   ├── layout.tsx         # Root layout with fonts and theme
+│   │   ├── page.tsx           # Home/landing page
+│   │   └── ui/                # UI component showcase page
+│   ├── components/
+│   │   ├── ui/                # 42+ reusable UI components
+│   │   ├── examples/          # Component usage examples
+│   │   ├── shared/            # Header, Footer, NavLinks
+│   │   ├── landing/           # Landing page sections
+│   │   └── illustrations/     # Illustration gallery
+│   └── lib/
+│       ├── fonts.ts           # RaidGuild brand fonts
+│       ├── theme-context.tsx  # Light/dark mode context
+│       └── utils.ts           # Utility functions (cn, etc.)
+├── public/
+│   ├── assets/
+│   │   ├── webp/              # 90+ brand illustrations
+│   │   │   ├── 1440x1440/    # Square format
+│   │   │   ├── 1080x1440/    # Portrait format
+│   │   │   ├── 1440x550/     # Wide format
+│   │   │   └── thumbnails/   # Thumbnail versions
+│   │   ├── logos/             # RaidGuild logos
+│   │   └── icon/              # Icon sets (8bit, dd, magic)
+│   └── fonts/                 # RaidGuild brand fonts
+├── docs/
+│   └── ui-components.md       # Comprehensive component catalog
+├── .github/
+│   └── copilot-instructions.md # AI coding assistant guidelines
+├── biome.jsonc                # Biome linter configuration
+├── lefthook.yml               # Git hooks configuration
+├── components.json            # shadcn/ui config
+├── tsconfig.json              # TypeScript configuration
+└── package.json               # Dependencies and scripts
 ```
 
 ## Design System
@@ -135,6 +165,7 @@ This project uses the **RaidGuild brand guidelines** from [brand.raidguild.org](
 ### UI Components
 
 42+ production-ready components built on Radix UI primitives:splay-lg mb-8">Welcome to RaidGuild</h1>
+
 <p className="text-body-lg text-muted-foreground mb-8">
 Built with the RaidGuild brand guidelines
 </p>
