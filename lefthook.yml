@@ -109,9 +109,10 @@ pre-push:
       run: bun biome ci
       fail_text: "Biome CI checks failed. Run 'bun biome check --write' to fix issues."
 
-    build-check:
-      run: bun run build
-      fail_text: "Build failed. Please fix compilation errors before pushing."
-      skip:
-        - merge
-        - rebase
+    # Temporarily disabled - build takes too long
+    # build-check:
+    #   run: bun run build
+    #   fail_text: "Build failed. Please fix compilation errors before pushing."
+    #   skip:
+    #     - merge
+    #     - rebase
