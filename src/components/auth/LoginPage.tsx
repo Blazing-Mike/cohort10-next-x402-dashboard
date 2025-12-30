@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useAccount, useSignMessage } from 'wagmi'
 import { useAppKit } from '@reown/appkit/react'
 import { createSiweMessage } from '@/lib/auth/siwe'
+import { API_ROUTES, REDIRECT_ROUTES } from '@/lib/routes'
 import { ExternalLink } from 'lucide-react' // Using as placeholder for eth icon if needed, or just text
 
 export default function LoginPage() {
@@ -32,7 +33,7 @@ export default function LoginPage() {
             setIsSigningIn(true)
 
             // 1. Get nonce
-            const nonceRes = await fetch('/api/auth/nonce')
+            const nonceRes = await fetch(API_ROUTES.auth.nonce)
             const { nonce } = await nonceRes.json()
 
             // 2. Create message
@@ -42,7 +43,7 @@ export default function LoginPage() {
             const signature = await signMessageAsync({ message })
 
             // 4. Verify signature
-            const verifyRes = await fetch('/api/auth/verify', {
+            const verifyRes = await fetch(API_ROUTES.auth.verify, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message, signature }),
@@ -53,7 +54,7 @@ export default function LoginPage() {
             const data = await verifyRes.json()
             if (data.success) {
                 // Redirect to dashboard or onboarding
-                router.push(data.redirectTo || '/dashboard')
+                router.push(data.redirectTo || REDIRECT_ROUTES.afterLogin)
                 router.refresh()
             }
         } catch (error) {
@@ -84,11 +85,11 @@ export default function LoginPage() {
                             disabled={isLoading || isSigningIn}
                             className="flex items-center justify-center gap-2 w-full rounded-md border border-neutral-300 bg-transparent px-4 py-3 text-sm font-medium text-moloch-800 transition-colors hover:bg-neutral-100 disabled:opacity-50"
                         >
-                            {/* Simple icon placeholder */}
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 2L2 12h20L12 2z" />
-                                <path d="M2 12l10 10 10-10" />
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 12L12 19L17 12M7 12L12 5M7 12L12 13M12 5L17 12M12 5L12 13M17 12L12 13" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
+
                             {isSigningIn
                                 ? 'Signing in...'
                                 : isConnected

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
+import { MAIN_APP_ROUTES } from '@/lib/routes'
 
 export default function CreateOrgPage() {
     const router = useRouter()
@@ -34,7 +35,7 @@ export default function CreateOrgPage() {
 
             const data = await res.json()
             if (data.success) {
-                router.push('/dashboard')
+                router.push(MAIN_APP_ROUTES.dashboard)
                 router.refresh()
             }
         } catch (error) {

@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 import { SiweMessage } from 'siwe'
-
 import { cookies } from 'next/headers'
+import { AUTH_ROUTES, MAIN_APP_ROUTES } from '@/lib/routes'
 
 export async function POST(request: Request) {
     const { message, signature } = await request.json()
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
             .single()
 
         const hasOrg = !!org
-        const redirectTo = hasOrg ? '/dashboard' : '/create-org'
+        const redirectTo = hasOrg ? MAIN_APP_ROUTES.dashboard : AUTH_ROUTES.createOrg
 
         return NextResponse.json({ success: true, address: fields.address, redirectTo })
     } catch (error) {

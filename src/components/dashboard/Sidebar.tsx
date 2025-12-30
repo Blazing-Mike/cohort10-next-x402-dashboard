@@ -28,13 +28,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { AUTH_ROUTES, MAIN_APP_ROUTES, REDIRECT_ROUTES } from '@/lib/routes'
 
 const navigation = [
-    { name: 'Overview', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'API Keys', href: '/dashboard/api-keys', icon: Key },
-    { name: 'Usage', href: '/dashboard/usage', icon: CreditCard },
-    { name: 'Team', href: '/dashboard/team', icon: Users },
-    { name: 'Settings', href: '/dashboard/settings', icon: Settings },
+    { name: 'Overview', href: MAIN_APP_ROUTES.dashboard, icon: LayoutDashboard },
+    { name: 'API Keys', href: `${MAIN_APP_ROUTES.dashboard}/api-keys`, icon: Key },
+    { name: 'Usage', href: `${MAIN_APP_ROUTES.dashboard}/usage`, icon: CreditCard },
+    { name: 'Team', href: `${MAIN_APP_ROUTES.dashboard}/team`, icon: Users },
+    { name: 'Settings', href: `${MAIN_APP_ROUTES.dashboard}/settings`, icon: Settings },
 ]
 
 export default function Sidebar() {
@@ -87,7 +88,7 @@ export default function Sidebar() {
         try {
             await fetch('/api/auth/logout', { method: 'POST' })
             disconnect()
-            router.push('/')
+            router.push(REDIRECT_ROUTES.afterLogout)
             router.refresh()
         } catch (error) {
             console.error('Sign out error:', error)
@@ -98,7 +99,7 @@ export default function Sidebar() {
     return (
         <div className="flex h-screen w-64 flex-col border-r border-moloch-800 bg-neutral-100">
             <div className="flex h-16 items-center border-b border-moloch-200 px-6">
-                <Link href="/dashboard" className="flex items-center gap-2">
+                <Link href={MAIN_APP_ROUTES.dashboard} className="flex items-center gap-2">
                     <span className="type-display-sm text-lg font-bold text-moloch-900">x402RG</span>
                 </Link>
             </div>
@@ -131,7 +132,7 @@ export default function Sidebar() {
                 <p className="px-2 text-xs font-semibold uppercase text-moloch-500 mb-2">Developers</p>
                 <nav className="flex flex-col space-y-1">
                     {navigation.map((item) => {
-                        const active = item.href === '/dashboard' ? pathname === item.href : pathname.startsWith(item.href)
+                        const active = item.href === MAIN_APP_ROUTES.dashboard ? pathname === item.href : pathname.startsWith(item.href)
                         return (
                             <Link
                                 key={item.name}
