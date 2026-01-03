@@ -19,7 +19,7 @@ export default function CreateOrgPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!address || !orgName.trim() || !email.trim()) return
+        if (!address || !orgName.trim()) return
 
         try {
             setIsLoading(true)
@@ -50,20 +50,20 @@ export default function CreateOrgPage() {
         <>
             <div className="flex min-h-screen flex-col relative">
                 <div className="flex flex-1 flex-col items-center justify-center">
-                    <div className="rounded-lg border border-moloch-200  p-8 shadow-sm max-w-xl w-full">
-                        <h1 className="type-display-md mb-2 text-4xl font-bold text-moloch-800 text-center">
+                    <div className="rounded-lg border border-moloch-300  p-8  max-w-[475px] w-full">
+                        <h1 className=" mb-2 text-4xl! font-bold text-moloch-800 text-center type-display-md">
                             Create an organisation
                         </h1>
-                        <p className="mb-8 text-sm text-neutral-600 text-center">
+                        <p className="mb-8 text-base text-neutral-600 text-center">
                             Create a shared organisation to manage api keys and access centrally.
                         </p>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6 max-w-[284px] w-full mx-auto">
                             <div className="space-y-2">
                                 <Label htmlFor="orgName">Organization Name</Label>
                                 <Input
                                     id="orgName"
-                                    placeholder="e.g. Acme Corp"
+                                    placeholder="Enter your org name"
                                     value={orgName}
                                     onChange={(e) => setOrgName(e.target.value)}
                                     required
@@ -72,23 +72,22 @@ export default function CreateOrgPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="email">Work Email</Label>
+                                <Label htmlFor="email">Email address<span className="text-neutral-400 text-sm">(optional)</span></Label>
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="name@company.com"
+                                    placeholder="Enter your email address"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    required
                                 />
                             </div>
 
                             <Button
                                 type="submit"
-                                className="w-full bg-moloch-800 text-white hover:bg-moloch-900"
+                                className="w-full bg-moloch-800 text-white hover:bg-moloch-900 font-normal! capitalize!"
                                 disabled={isLoading}
                             >
-                                {isLoading ? 'Creating...' : 'Create Organization'}
+                                {isLoading ? 'Creating...' : 'Create'}
                             </Button>
                         </form>
                     </div>

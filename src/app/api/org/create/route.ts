@@ -5,7 +5,7 @@ export async function POST(request: Request) {
     try {
         const { name, email, walletAddress } = await request.json()
 
-        if (!name || !email || !walletAddress) {
+        if (!name || !walletAddress) {
             return NextResponse.json({ success: false, error: 'Missing required fields' }, { status: 400 })
         }
 
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
             .from('organizations')
             .insert({
                 name,
-                email,
+                ...(email && { email }), // Only include email if provided
                 owner_id: user.id
             })
 

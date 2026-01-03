@@ -12,7 +12,10 @@ import {
     Settings,
     Users,
     Loader2,
-    LogOut
+    LogOut,
+    Coffee,
+    Code2,
+    TerminalIcon
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
@@ -29,16 +32,19 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { AUTH_ROUTES, MAIN_APP_ROUTES, REDIRECT_ROUTES } from '@/lib/routes'
+import { Button } from '@/components/ui/button'
+import { useSidebar } from '@/context/SidebarContext'
 
 const navigation = [
     { name: 'Overview', href: MAIN_APP_ROUTES.dashboard, icon: LayoutDashboard },
-    { name: 'API Keys', href: `${MAIN_APP_ROUTES.dashboard}/api-keys`, icon: Key },
-    { name: 'Usage', href: `${MAIN_APP_ROUTES.dashboard}/usage`, icon: CreditCard },
-    { name: 'Team', href: `${MAIN_APP_ROUTES.dashboard}/team`, icon: Users },
-    { name: 'Settings', href: `${MAIN_APP_ROUTES.dashboard}/settings`, icon: Settings },
+    // { name: 'API Keys', href: `${MAIN_APP_ROUTES.dashboard}/api-keys`, icon: Key },
+    // { name: 'Usage', href: `${MAIN_APP_ROUTES.dashboard}/usage`, icon: CreditCard },
+    // { name: 'Team', href: `${MAIN_APP_ROUTES.dashboard}/team`, icon: Users },
+    // { name: 'Settings', href: `${MAIN_APP_ROUTES.dashboard}/settings`, icon: Settings },
 ]
 
 export default function Sidebar() {
+    const { isCollapsed } = useSidebar()
     const pathname = usePathname()
     const router = useRouter()
     const { address } = useAccount()
@@ -97,78 +103,86 @@ export default function Sidebar() {
 
 
     return (
-        <div className="flex h-screen w-64 flex-col border-r border-moloch-800 bg-neutral-100">
-            <div className="flex h-16 items-center border-b border-moloch-200 px-6">
-                <Link href={MAIN_APP_ROUTES.dashboard} className="flex items-center gap-2">
-                    <span className="type-display-sm text-lg font-bold text-moloch-900">x402RG</span>
-                </Link>
-            </div>
-
-            <div className="p-4">
-                <Select value={orgName || "loading"} disabled={isLoadingOrg}>
-                    <SelectTrigger className="w-full bg-white border-moloch-200">
-                        <SelectValue placeholder="Select Organization">
-                            {isLoadingOrg ? (
-                                <div className="flex items-center gap-2">
-                                    <Loader2 className="h-4 w-4 animate-spin" />
-                                    <span>Loading...</span>
-                                </div>
-                            ) : (
-                                orgName || "Create Organization"
-                            )}
-                        </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                        {orgName ? (
-                            <SelectItem value={orgName}>{orgName}</SelectItem>
-                        ) : (
-                            <SelectItem value="loading">Loading...</SelectItem>
-                        )}
-                    </SelectContent>
-                </Select>
-            </div>
-
-            <div className="px-4 py-2">
-                <p className="px-2 text-xs font-semibold uppercase text-moloch-500 mb-2">Developers</p>
-                <nav className="flex flex-col space-y-1">
-                    {navigation.map((item) => {
-                        const active = item.href === MAIN_APP_ROUTES.dashboard ? pathname === item.href : pathname.startsWith(item.href)
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={cn(
-                                    'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                                    active
-                                        ? 'bg-moloch-100 text-moloch-900'
-                                        : 'text-moloch-700 hover:bg-neutral-200 hover:text-moloch-900'
+        <div 
+            className={cn(
+                "flex h-screen flex-col bg-neutral-200 border-r border-neutral-300 transition-all duration-300 ease-in-out",
+                isCollapsed ? "w-0 overflow-hidden" : "w-64"
+            )}
+        >
+            {!isCollapsed && (
+                <>
+                    {/* Organization Selector */}
+                    <div className="p-4 pt-5">
+                        <Select value={orgName || "loading"} disabled={isLoadingOrg}>
+                            <SelectTrigger className="w-full bg-white border-neutral-300 h-10 text-sm font-normal">
+                                <SelectValue placeholder="Select Organization">
+                                    {isLoadingOrg ? (
+                                        <div className="flex items-center gap-2">
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                            <span>Loading...</span>
+                                        </div>
+                                    ) : (
+                                        orgName || "Create Organization"
+                                    )}
+                                </SelectValue>
+                            </SelectTrigger>
+                            <SelectContent>
+                                {orgName ? (
+                                    <SelectItem value={orgName}>{orgName}</SelectItem>
+                                ) : (
+                                    <SelectItem value="loading">Loading...</SelectItem>
                                 )}
-                            >
-                                <item.icon className="h-4 w-4" />
-                                {item.name}
-                            </Link>
-                        )
-                    })}
-                </nav>
-            </div>
+                            </SelectContent>
+                        </Select>
+                    </div>
 
-            <div className="mt-auto border-t border-moloch-200 p-4">
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <button className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm font-medium text-moloch-700 hover:bg-neutral-200 outline-none">
-                            <div className="h-6 w-6 rounded-full bg-moloch-500"></div>
-                            <span>{address ? `${address.slice(0, 6)}...${address.slice(-4)}` : 'User'}</span>
-                            <LogOut className="ml-auto h-4 w-4 opacity-50" />
-                        </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-56">
-                        <DropdownMenuItem onClick={handleSignOut} className="text-red-600 focus:text-red-700 focus:bg-red-50 cursor-pointer">
-                            <LogOut className="mr-2 h-4 w-4" />
-                            <span>Sign out</span>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
+                    {/* Developers Section */}
+                    <div className="px-4 py-2 flex-1">
+                        <div className="flex items-center gap-2 px-2 mb-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 16H18" stroke="#29100A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M6 8L10 12L6 16" stroke="#29100A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M2 18V6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18Z" stroke="#29100A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+
+                            <p className="text-xl font-bold text-moloch-800 font-serif">Developers</p>
+                        </div>
+                        <nav className="flex flex-col space-y-0.5">
+                            {/* {navigation.map((item) => {
+                                const active = item.href === MAIN_APP_ROUTES.dashboard ? pathname === item.href : pathname.startsWith(item.href)
+                                return (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={cn(
+                                            'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-normal transition-colors',
+                                            active
+                                                ? 'bg-white text-neutral-900 shadow-sm'
+                                                : 'text-neutral-700 hover:bg-neutral-200/50 hover:text-neutral-900'
+                                        )}
+                                    >
+                                        <item.icon className="h-4 w-4" />
+                                        {item.name}
+                                    </Link>
+                                )
+                            })} */}
+                        </nav>
+                    </div>
+
+                    {/* Buy us a coffee Button */}
+                    <div className="p-4">
+                        <Button 
+                            size="lg"
+                            className=" bg-[#2D1810] hover:bg-[#3D2418] text-white text-sm font-normal rounded-lg  shadow-sm"
+                            asChild
+                        >
+                            <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" className='text-base! type-body-base! lowercase! font-normal!'>
+                                Buy us a coffee
+                            </a>
+                        </Button>
+                    </div>
+                </>
+            )}
         </div>
     )
 }
