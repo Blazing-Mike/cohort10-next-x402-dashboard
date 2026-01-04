@@ -227,7 +227,7 @@ When working with AI coding assistants:
 
 ## Related Repositories
 
-- **Go Facilitator**: [raid-guild/x402-facilitator](https://github.com/raid-guild/x402-facilitator) (backend)
+- **Go Facilitator**: [raid-guild/x402-facilitator](https://github.com/raid-guild/x402-facilitator-go) (backend)
 - **Brand Guidelines**: [brand.raidguild.org](https://brand.raidguild.org/)
 
 ## License

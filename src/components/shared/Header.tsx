@@ -46,10 +46,10 @@ type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
 	{ label: "Home", href: "/" },
-	{ label: "Components", href: "/ui" },
+	{ label: "Dashboard", href: "/dashboard" },
 	{
 		label: "Docs",
-		href: "https://github.com/raid-guild/cohort10-next-x402-dashboard#readme",
+		href: "https://github.com/raid-guild/x402-facilitator-go",
 		isExternal: true,
 	},
 	{
@@ -236,15 +236,15 @@ type HeaderLayoutProps = {
 
 function HeaderDesktop({ theme, activeAnchorId, NavLinksComponent, links }: HeaderLayoutProps) {
 	return (
-		<div className="flex items-center justify-between gap-6 py-5">
+		<div className="flex items-center justify-between gap-8 py-5">
 			<Logo variant="thin" logoPath={theme.logoPath} />
-			<NavLinksComponent
-				theme={theme}
-				activeAnchorId={activeAnchorId}
-				variant="desktop"
-				links={links}
-			/>
-			<div className="ml-4">
+			<div className="flex items-center gap-8 flex-1 justify-end">
+				<NavLinksComponent
+					theme={theme}
+					activeAnchorId={activeAnchorId}
+					variant="desktop"
+					links={links}
+				/>
 				<AuthButton />
 			</div>
 		</div>

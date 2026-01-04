@@ -98,7 +98,7 @@ export default function HowItWorksSection() {
 				<p className="type-body-base text-neutral-600 dark:text-neutral-400">
 					Want to self-host?{" "}
 					<a
-						href="https://github.com/raid-guild/x402-facilitator"
+						href="https://github.com/raid-guild/x402-facilitator-go"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="font-semibold text-moloch-500 hover:underline"

@@ -8,7 +8,7 @@
  * Routes for login, signup, password recovery, etc.
  */
 export const AUTH_ROUTES = {
-    login: "/",
+    login: "/login",
     createOrg: "/create-org",
 } as const;
 
@@ -18,7 +18,7 @@ export const AUTH_ROUTES = {
  */
 export const MAIN_APP_ROUTES = {
     dashboard: "/dashboard",
-    landing: "/landing",
+    landing: "/",
 } as const;
 
 /**
@@ -37,8 +37,8 @@ export const API_ROUTES = {
  * Routes accessible without authentication
  */
 export const PUBLIC_ROUTES = [
-    AUTH_ROUTES.login,
     MAIN_APP_ROUTES.landing,
+    AUTH_ROUTES.login,
     "/terms",
     "/privacy",
 ] as const;
@@ -58,7 +58,7 @@ export const PROTECTED_ROUTES = [
  */
 export const REDIRECT_ROUTES = {
     afterLogin: MAIN_APP_ROUTES.dashboard,
-    afterLogout: AUTH_ROUTES.login,
+    afterLogout: MAIN_APP_ROUTES.landing,
 } as const;
 
 /**
